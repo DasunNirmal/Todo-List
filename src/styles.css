@@ -110,3 +110,28 @@ label {
   display: none;
 }
 
+/* ALL ARE CARDS  */
+
+.card {
+  background-color: var(--clr-card-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.9rem 2rem;
+  gap: 2rem;
+}
+
+/* HEADER'S CARD */
+
+header.card {
+  background: transparent;
+  padding: 0;
+  align-items: flex-start;
+}
+
+header.card h1 {
+  color: var(--clr-white);
+  letter-spacing: 1.3rem;
+  font-weight: 700;
+  font-size: calc(var(--base-font) * 2);
+}
