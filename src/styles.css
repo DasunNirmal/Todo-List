@@ -86,3 +86,27 @@ body {
   width: 26px;
   height: 26px;
 }
+
+/* INPUT AND BUTTON */
+
+input,
+button {
+  font: inherit;
+  border: 0;
+  background: transparent;
+}
+
+button {
+  display: flex;
+  user-select: none;
+}
+
+input:focus,
+button:focus {
+  outline: 0;
+}
+
+label {
+  display: none;
+}
+
