@@ -1,2 +1,7 @@
-
+<header class="card">
+  <h1>TODO</h1>
+  <button id="theme-switcher" (click)="toggleTheme()">
+    <div [ngClass]="isLightTheme ? 'icon-light' : 'icon-dark'"></div>
+  </button>
+</header>
 <router-outlet />
