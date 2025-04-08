@@ -34,3 +34,29 @@ body.light {
   --clr-gb-5: hsl(252, 9%, 73%);
   --clr-gb-6: hsl(252, 21%, 94%);
 }
+
+/* BODY */
+
+body {
+  font: var(--fw-normal) var(--base-font) var(--ff-sans);
+  background: var(--clr-page-bg) var(--img-bg) no-repeat 0 0 / 100vw 30rem;
+  padding-top: 8rem;
+  width: min(85%, 54rem);
+  margin: auto;
+}
+
+/* THEM */
+
+.icon-dark {
+  background: url("assets/images/icon-sun.svg") no-repeat center;
+  background-size: contain;
+  width: 26px;
+  height: 26px;
+}
+
+.icon-light {
+  background: url("assets/images/icon-moon.svg") no-repeat center;
+  background-size: contain;
+  width: 26px;
+  height: 26px;
+}
