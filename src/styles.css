@@ -255,3 +255,11 @@ body.light .add .txt-container .txt-input {
 body.light .todos {
   box-shadow: 0 0 2rem 0.4rem var(--clr-box-shadow);
 }
+
+/* COMPLETED ITEM */
+
+.todos .card.checked .item {
+  text-decoration: line-through;
+  color: var(--clr-gb-3);
+  text-decoration-color: var(--clr-gb-3);
+}
