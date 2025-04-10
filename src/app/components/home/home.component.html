@@ -29,7 +29,7 @@
         <span class="check"></span>
       </div>
       <p class="item">{{ task.description }}</p>
-      <button class="clear"><div class="clear-icon"></div></button>
+      <button class="clear" (click)="removeTask(task.id)"><div class="clear-icon"></div></button>
     </li>
   </ul>
   <div class="card stat">
