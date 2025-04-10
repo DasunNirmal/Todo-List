@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
 
     this.taskService.addTask(newTask).subscribe({
       next: () => {
-        this.loadAllTasks(); // Refresh the task list
+        this.loadAllTasks();
       },
       error: (error) => {
         console.error('Error adding task:', error);
@@ -79,12 +79,23 @@ export class HomeComponent implements OnInit {
 
     this.taskService.updateTask(updatedTask,task.id).subscribe({
       next: () => {
-        this.loadAllTasks(); // Refresh the task list
+        this.loadAllTasks();
         console.log('Task updated successfully');
       },
       error: (error) => {
         console.error('Error adding task:', error);
       }
     });
+  }
+
+  removeTask(id: string) {
+    this.taskService.deleteTask(id).subscribe({
+      next: () => {
+        console.log('Task deleted successfully');
+      },
+      error: (error) => {
+        console.error('Error deleting task:', error);
+      }
+    })
   }
 }
