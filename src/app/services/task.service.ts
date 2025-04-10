@@ -16,4 +16,8 @@ export class TaskService {
   addTask(task: Tasks) {
     return this.http.post(this.apiUrl, task);
   }
+
+  updateTask(updatedTask: Tasks, id: string) {
+    return this.http.patch(`${this.apiUrl}/${id}`, updatedTask);
+  }
 }

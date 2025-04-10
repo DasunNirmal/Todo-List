@@ -64,6 +64,7 @@ header.card h1 {
 .card .cb-container .cb-input {
   transform: scale(1.8);
   opacity: 0;
+  cursor: pointer;
 }
 
 .card .cb-container .check {
@@ -183,6 +184,12 @@ body.light .todos {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
+}
+
+.clear-icon {
+  width: 18px;
+  height: 18px;
+  background: url("../../assets/images/icon-cross.svg") no-repeat center;
 }
 
 .todos .card:hover .clear {

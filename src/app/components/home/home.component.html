@@ -23,13 +23,13 @@
     </div>
   </div>
   <ul class="todos">
-    <li *ngFor="let task of tasks; trackBy: trackTaskById" class="card" draggable="true">
+    <li *ngFor="let task of tasks; trackBy: trackTaskById" class="card" [ngClass]="{'checked': task.status === 'COMPLETED'}" draggable="true" #card>
       <div class="cb-container">
-        <input type="checkbox" [checked]="task.status === 'COMPLETED'" (click)="changeStatus(task, $event)" class="cb-input"/>
+        <input type="checkbox" [checked]="task.status === 'COMPLETED'" (click)="changeStatus(task, $event, card)" class="cb-input"/>
         <span class="check"></span>
       </div>
       <p class="item">{{ task.description }}</p>
-      <button class="clear"></button>
+      <button class="clear"><div class="clear-icon"></div></button>
     </li>
   </ul>
   <div class="card stat">

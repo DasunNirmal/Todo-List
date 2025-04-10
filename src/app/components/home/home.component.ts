@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CommonModule, DatePipe, NgClass, NgFor} from '@angular/common';
 import {TaskService} from '../../services/task.service';
 import {Tasks} from '../../model/tasks/tasks.module';
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   tasks: Tasks[] = [];
   currentDate: string | null = '';
   currentStatus: string  = 'PENDING';
+  @ViewChild('card') card: any
 
   constructor(private taskService: TaskService, private date: DatePipe) {}
 
@@ -48,7 +49,7 @@ export class HomeComponent implements OnInit {
       id: '', /*back end will handle the id*/
       description: value,
       status: this.currentStatus,
-      createdAt: this.currentDate || ''
+      created_at: this.currentDate || ''
     };
 
     this.taskService.addTask(newTask).subscribe({
@@ -61,9 +62,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  changeStatus(task: Tasks, event: Event) {
+  changeStatus(task: Tasks, event: Event, card: HTMLElement) {
     const target = event.target as HTMLInputElement;
     task.status = target.checked ? 'COMPLETED' : 'PENDING';
+    target.checked ? card.classList.add('checked') : card.classList.remove('checked');
     console.log(task);
+
+    const updatedTask: Tasks = {
+      id: task.id,
+      description: task.description,
+      status: task.status,
+      created_at: this.currentDate || ''
+    };
+
+    console.log(updatedTask);
+
+    this.taskService.updateTask(updatedTask,task.id).subscribe({
+      next: () => {
+        this.loadAllTasks(); // Refresh the task list
+        console.log('Task updated successfully');
+      },
+      error: (error) => {
+        console.error('Error adding task:', error);
+      }
+    });
   }
 }
