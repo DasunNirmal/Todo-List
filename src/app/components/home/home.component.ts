@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {NgClass} from '@angular/common';
+import {NgClass, NgFor} from '@angular/common';
 import {TaskService} from '../../services/task.service';
 import {Tasks} from '../../model/tasks/tasks.module';
 
 @Component({
   selector: 'app-home',
   imports: [
-    NgClass
+    NgClass,
+    NgFor
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   isLightTheme = false;  /*Tracks whether the theme is light or dark*/
@@ -27,8 +28,13 @@ export class HomeComponent implements OnInit {
   }
 
   loadAllTasks() {
-    this.taskService.getAllTasks().subscribe((data) => {
+    this.taskService.getAllTasks().subscribe((data: any) => {
+      this.tasks = data;
       console.log(data);
-    })
+    });
+  }
+
+  trackTaskById(index: number, task: Tasks): string {
+    return task.id;
   }
 }
