@@ -21,7 +21,16 @@
       />
     </div>
   </div>
-  <ul class="todos"></ul>
+  <ul class="todos">
+    <li *ngFor="let task of tasks; trackBy: trackTaskById" class="card" draggable="true">
+      <div class="cb-container">
+        <input type="checkbox" [checked]="task.status === 'COMPLETED'" class="cb-input"/>
+        <span class="check"></span>
+      </div>
+      <p class="item">{{ task.description }}</p>
+      <button class="clear"></button>
+    </li>
+  </ul>
   <div class="card stat">
     <p class="corner"><span id="items-left">0</span> items left</p>
     <div class="filter">
