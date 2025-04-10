@@ -7,7 +7,7 @@
 <main>
   <div class="card add">
     <div class="cb-container">
-      <button id="add-btn">+</button>
+      <button id="add-btn" (click)="addTask(newTask.value)">+</button>
     </div>
     <div class="txt-container">
       <label for="addt">Create todo</label>
@@ -18,13 +18,14 @@
         spellcheck="false"
         autocomplete="off"
         id="addt"
+        #newTask
       />
     </div>
   </div>
   <ul class="todos">
     <li *ngFor="let task of tasks; trackBy: trackTaskById" class="card" draggable="true">
       <div class="cb-container">
-        <input type="checkbox" [checked]="task.status === 'COMPLETED'" class="cb-input"/>
+        <input type="checkbox" [checked]="task.status === 'COMPLETED'" (click)="changeStatus(task, $event)" class="cb-input"/>
         <span class="check"></span>
       </div>
       <p class="item">{{ task.description }}</p>
