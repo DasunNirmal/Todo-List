@@ -183,6 +183,7 @@ body.light .todos {
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
+  color: #515267FF;
   transition: opacity 0.5s ease;
 }
 
@@ -195,6 +196,7 @@ body.light .todos {
 .todos .card:hover .clear {
   opacity: 1;
   pointer-events: all;
+  color: #3A7BFDFF;
 }
 
 /* STAT CONTAINER */
