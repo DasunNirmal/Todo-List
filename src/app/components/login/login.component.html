@@ -5,7 +5,7 @@
       <p>Please sign in to continue</p>
     </div>
 
-    <form class="login-form">
+    <form class="login-form" (ngSubmit)="login()">
       <div class="form-group">
         <label for="email">Email</label>
         <div class="input-container">
@@ -15,6 +15,8 @@
             id="email"
             placeholder="Enter your email"
             required
+            [(ngModel)]="email"
+            name="email"
           />
         </div>
       </div>
@@ -28,6 +30,8 @@
             id="password"
             placeholder="Enter your password"
             required
+            [(ngModel)]="password"
+            name="password"
           />
         </div>
       </div>
@@ -36,10 +40,10 @@
         <a href="#" class="forgot-password">Forgot Password?</a>
       </div>
 
-      <button (click)="login()" class="login-button">Log In</button>
+      <button type="submit" class="login-button">Log In</button>
 
       <div class="register-link">
-        Don't have an account? <a (click)="goToRegister()" style="cursor: pointer;">Register..</a>
+        Don't have an account? <a routerLink="/register" style="cursor: pointer;">Register..</a>
       </div>
     </form>
   </div>
