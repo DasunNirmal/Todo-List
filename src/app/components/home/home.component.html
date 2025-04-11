@@ -28,7 +28,8 @@
         <input type="checkbox" [checked]="task.status === 'COMPLETED'" (click)="changeStatus(task, $event, card)" class="cb-input"/>
         <span class="check"></span>
       </div>
-      <p class="item">{{ task.description }}</p>
+      <input type="text" class="item" [readonly]="editingTaskId !== task.id" [value]="task.description" #currentTask/>
+      <button class="clear" (click)="toggleEditMode(task.id, currentTask, currentTask.value)">{{ editingTaskId === task.id ? 'Save' : 'Edit' }}</button>
       <button class="clear" (click)="removeTask(task.id)"><div class="clear-icon"></div></button>
     </li>
   </ul>
