@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Tasks} from '../model/tasks/tasks.module';
 
 @Injectable({
@@ -10,18 +10,34 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   getAllTasks() {
-    return this.http.get(this.apiUrl);
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.get(this.apiUrl, { headers });
   }
 
   addTask(task: Tasks) {
-    return this.http.post(this.apiUrl, task);
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.post(this.apiUrl, task, { headers });
   }
 
   updateTask(updatedTask: Tasks, id: string) {
-    return this.http.patch(`${this.apiUrl}/${id}`, updatedTask);
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.patch(`${this.apiUrl}/${id}`, updatedTask, { headers });
   }
 
   deleteTask(id: string) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.delete(`${this.apiUrl}/${id}`, { headers });
   }
 }
