@@ -91,6 +91,7 @@ export class HomeComponent implements OnInit {
   removeTask(id: string) {
     this.taskService.deleteTask(id).subscribe({
       next: () => {
+        this.loadAllTasks();
         console.log('Task deleted successfully');
       },
       error: (error) => {
