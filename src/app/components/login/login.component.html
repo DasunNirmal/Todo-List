@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Please sign in to continue</p>
+    </div>
+
+    <form class="login-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-container">
+          <i class="email-icon"></i>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-container">
+          <i class="password-icon"></i>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-options">
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </div>
+
+      <button (click)="login()" class="login-button">Sign In</button>
+
+      <div class="register-link">
+        Don't have an account? <a href="#">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>

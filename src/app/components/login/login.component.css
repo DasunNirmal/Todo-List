@@ -1,1 +1,15 @@
+.login-container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-page-bg);
+  background-image: var(--img-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  font-family: var(--ff-sans);
+}
+
 
