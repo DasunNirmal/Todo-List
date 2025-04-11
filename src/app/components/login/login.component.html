@@ -36,10 +36,10 @@
         <a href="#" class="forgot-password">Forgot Password?</a>
       </div>
 
-      <button (click)="login()" class="login-button">Sign In</button>
+      <button (click)="login()" class="login-button">Log In</button>
 
       <div class="register-link">
-        Don't have an account? <a href="#">Sign Up</a>
+        Don't have an account? <a (click)="goToRegister()" style="cursor: pointer;">Register..</a>
       </div>
     </form>
   </div>
