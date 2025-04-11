@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   tasks: Tasks[] = [];
   currentDate: string | null = '';
   currentStatus: string  = 'PENDING';
+  editingTaskId: string | null = null;
   @ViewChild('card') card: any
 
   constructor(private taskService: TaskService, private date: DatePipe) {}
@@ -78,6 +79,33 @@ export class HomeComponent implements OnInit {
     console.log(updatedTask);
 
     this.taskService.updateTask(updatedTask,task.id).subscribe({
+      next: () => {
+        this.loadAllTasks();
+        console.log('Task status changed successfully');
+      },
+      error: (error) => {
+        console.error('Error adding task:', error);
+      }
+    });
+  }
+
+  toggleEditMode(taskId: string, inputElement?: HTMLInputElement, value?: string) {
+    this.editingTaskId = this.editingTaskId === taskId ? null : taskId;
+
+    if (this.editingTaskId && inputElement) {
+      setTimeout(() => inputElement.focus(), 0);
+    }
+
+    console.log(value);
+
+    const updatedTask: Tasks = {
+      id: taskId,
+      description: value || '',
+      status: this.currentStatus,
+      created_at: this.currentDate || ''
+    };
+
+    this.taskService.updateTask(updatedTask, taskId).subscribe({
       next: () => {
         this.loadAllTasks();
         console.log('Task updated successfully');
